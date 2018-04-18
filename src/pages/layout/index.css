@@ -1,0 +1,18 @@
+.wrap {
+    min-height: 100vh;
+}
+
+.blank-sider {
+    background: #001529;
+}
+
+.blank-index-logo {
+    height: 64px;
+    display: flex;
+    background: #002140;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+}
+

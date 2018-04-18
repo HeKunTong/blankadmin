@@ -1,15 +1,6 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
+import React from 'react';
+import { render } from 'mirrorx';
+import App from './App';
+import './index.css';
 
-import Example from '../../src'
-
-class Demo extends Component {
-  render() {
-    return <div>
-      <h1>blankadmin Demo</h1>
-      <Example/>
-    </div>
-  }
-}
-
-render(<Demo/>, document.querySelector('#demo'))
+render(<App />, document.querySelector('#demo'));

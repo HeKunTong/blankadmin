@@ -1,7 +1,7 @@
 {
   "name": "blankadmin",
   "version": "1.0.0",
-  "description": "blankadmin React component",
+  "description": "A frontend Framework for building admin application, using antd and mirrorjs.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -18,20 +18,31 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "moment": "^2.22.1",
+    "recompose": "^0.26.0",
+    "superagent": "^3.8.2"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "antd": "^3.4.1",
+    "babel-plugin-import": "^1.7.0",
+    "mirrorx": "^0.2.10",
     "nwb": "0.21.x",
+    "nwb-less": "^0.7.0",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "webpack": "^4.5.0"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Blank He",
   "license": "MIT",
-  "repository": "",
   "keywords": [
-    "react-component"
+    "admin",
+    "mirrorx",
+    "antd",
+    "rest"
   ]
 }
