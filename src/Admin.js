@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Router, Switch, Route } from 'mirrorx';
+import { Router, Switch, Route, render } from 'mirrorx';
 import { LocaleProvider } from 'antd';
 import locales from 'antd/lib/locale-provider';
-import { Layout, Login} from './pages';
+import { Layout, Login, Menu} from './pages';
 import {logo} from './images';
 
 class Admin extends Component {
+
+  componentWillMount() {
+    render();
+  }
 
   render() {
 
@@ -23,7 +27,7 @@ class Admin extends Component {
                   menu: React.createElement(menu || Menu, {
                     models,
                   }),
-                  title
+                  title: React.cloneElement(title)
                 })} />
               </Switch>
             </div>
