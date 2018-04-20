@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Router, Switch, Route, render, model as registerModel, browserHistory } from 'mirrorx';
 import { LocaleProvider } from 'antd';
 import locales from 'antd/lib/locale-provider';
 import models from './models';
-import { Layout, Login, Menu } from './pages';
+import { AppBar, Layout, Login, Menu, UserMenu } from './pages';
 
 class Admin extends Component {
 
@@ -16,7 +17,7 @@ class Admin extends Component {
 
   render() {
 
-    const { locale, appLayout, title, menu, login, children } = this.props;
+    const { locale, appLayout, title, menu, userMenu, appBar, login, children } = this.props;
 
     const models = React.Children.map(children, ({props}) => props) || [];
 
@@ -30,6 +31,8 @@ class Admin extends Component {
                 menu: React.createElement(menu || Menu, {
                   models,
                 }),
+                userMenu: React.createElement(userMenu || UserMenu),
+                appBar: React.createElement(appBar || AppBar),
                 title
               })} />
             </Switch>
@@ -47,5 +50,12 @@ Admin.defaultProps = {
   login: Login,
 };
 
+Admin.propTypes = {
+  appLayout: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  locale: PropTypes.string,
+  messages: PropTypes.object,
+  title: PropTypes.node,
+  menu: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+};
 
 export default Admin;
