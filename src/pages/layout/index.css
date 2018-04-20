@@ -8,15 +8,49 @@
 
 .blank-index-logo {
     height: 64px;
-    display: flex;
+    line-height: 64px;
     background: #002140;
-    justify-content: center;
-    align-items: center;
+    padding: 0 0 0 24px;
+    transition: all .3s;
+    overflow: hidden;
+}
+
+.blank-index-logo h1 {
     color: #fff;
     font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 0 0 12px;
 }
 
 .blank-menu-container {
     padding: 16px 0;
+}
+
+.blank-header-container {
+    width: 100%;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.blank-menus-button {
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.blank-menus-button:hover {
+    background: #E6F7FF;
+}
+
+.ant-dropdown-menu {
+    width: 160px;
+}
+
+.blank-menus .anticon {
+    margin: 0 10px 0 0;
 }
 

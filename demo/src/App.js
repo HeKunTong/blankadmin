@@ -6,7 +6,8 @@ class App extends Component {
   render() {
     return (
       <Admin>
-        <Model name='user' icon={() => <Icon type='user'/>}/>
+        <Model name='users' icon={() => <Icon type='user'/>}/>
+        <Model name='posts' icon={() => <Icon type='file-text'/>}/>
       </Admin>
     )
   }

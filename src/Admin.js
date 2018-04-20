@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Router, Switch, Route, render } from 'mirrorx';
+import { Router, Switch, Route, render, model as registerModel, browserHistory } from 'mirrorx';
 import { LocaleProvider } from 'antd';
 import locales from 'antd/lib/locale-provider';
-import { Layout, Login, Menu} from './pages';
-import {logo} from './images';
+import models from './models';
+import { Layout, Login, Menu } from './pages';
 
 class Admin extends Component {
 
   componentWillMount() {
+    models.forEach(model => {
+      registerModel(model);
+    });
     render();
   }
 
@@ -18,28 +21,28 @@ class Admin extends Component {
     const models = React.Children.map(children, ({props}) => props) || [];
 
     return (
-        <LocaleProvider locale={locales[locale]}>
-          <Router>
-            <div>
-              <Switch>
-                <Route exact path='/login' component={login}/>
-                <Route path='/' render={() => React.createElement(appLayout || Layout, {
-                  menu: React.createElement(menu || Menu, {
-                    models,
-                  }),
-                  title: React.cloneElement(title)
-                })} />
-              </Switch>
-            </div>
-          </Router>
-        </LocaleProvider>
+      <LocaleProvider locale={locales[locale]}>
+        <Router history={browserHistory}>
+          <div>
+            <Switch>
+              <Route exact path='/login' component={login}/>
+              <Route path='/' render={() => React.createElement(appLayout || Layout, {
+                menu: React.createElement(menu || Menu, {
+                  models,
+                }),
+                title
+              })} />
+            </Switch>
+          </div>
+        </Router>
+      </LocaleProvider>
     )
   }
 }
 
 Admin.defaultProps = {
   locale: 'zh',
-  title: <div><img src={logo} alt='' style={{width: '32px', height: '32px', marginRight: '12px'}}/><span>Ant Design Pro</span></div>,
+  title: 'Ant Design Pro',
   messages: {},
   login: Login,
 };

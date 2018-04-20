@@ -4,7 +4,7 @@ import { Menu, Icon } from 'antd';
 import map from 'lodash/map';
 import split from 'lodash/split';
 
-const { SubMenu, Item } = Menu;
+const { Item } = Menu;
 
 const handleMenuClick = ({ key }) => {
   switch (key) {
@@ -26,19 +26,16 @@ const AppMenu = ({models, selectedKeys}) => (
       <span>首页</span>
     </Item>
     {
-      map(models, ({ name, icon }) => (
+      map(models, ({name, icon}) => (
         <Item key={name}>
           {
+            icon &&
             React.createElement(icon)
           }
           <span>{name}</span>
         </Item>
       ))
     }
-    <Item key='logout'>
-      <Icon type='logout' />
-      <span>注销</span>
-    </Item>
   </Menu>
 );
 
