@@ -4,14 +4,18 @@ import { Router, Switch, Route, render, model as registerModel, browserHistory }
 import { LocaleProvider } from 'antd';
 import locales from 'antd/lib/locale-provider';
 import models from './models';
+import { getI18nModel } from './i18n';
 import { AppBar, Layout, Login, Menu, UserMenu } from './pages';
+
+models.forEach(model => {
+  registerModel(model);
+});
 
 class Admin extends Component {
 
   componentWillMount() {
-    models.forEach(model => {
-      registerModel(model);
-    });
+    const { locale, messages } = this.props;
+    registerModel(getI18nModel(locale, messages));
     render();
   }
 

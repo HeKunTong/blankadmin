@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect, actions } from 'mirrorx';
+import compose from 'recompose/compose';
+import { translate } from '../../i18n';
 import { Menu, Icon } from 'antd';
 import map from 'lodash/map';
 import split from 'lodash/split';
@@ -19,7 +21,7 @@ const handleMenuClick = ({ key }) => {
   }
 };
 
-const AppMenu = ({models, selectedKeys}) => (
+const AppMenu = ({models, translate, selectedKeys}) => (
   <Menu onClick={handleMenuClick} selectedKeys={[selectedKeys]} mode='inline' theme='dark'>
     <Item key='home'>
       <Icon type='home' />
@@ -32,7 +34,7 @@ const AppMenu = ({models, selectedKeys}) => (
             icon &&
             React.createElement(icon)
           }
-          <span>{name}</span>
+          <span>{translate(`models.${name}.name`)}</span>
         </Item>
       ))
     }
@@ -44,8 +46,13 @@ const getSelectedKeys = ({ pathname }) => {
   return keys[1] || 'home';
 };
 
-export default connect(({routing: {location}}) => {
-  return {
-    selectedKeys: getSelectedKeys(location)
-  };
-})(AppMenu);
+const enhance = compose(
+  connect(({routing: {location}}) => {
+    return {
+      selectedKeys: getSelectedKeys(location)
+    };
+  }),
+  translate
+);
+
+export default enhance(AppMenu);

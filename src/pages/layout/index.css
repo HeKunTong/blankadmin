@@ -54,3 +54,15 @@
     margin: 0 10px 0 0;
 }
 
+.blank-footer {
+    color: rgba(0, 0, 0, 0.45);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blank-footer a {
+    margin: 0 0 0 12px;
+}
+

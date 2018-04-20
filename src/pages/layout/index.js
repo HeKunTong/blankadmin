@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'mirrorx';
+import compose from 'recompose/compose';
+import { translate } from '../../i18n';
 import { Layout } from 'antd';
 import { logo } from '../../images';
 import './index.css';
 
 const { Sider, Header, Content, Footer } = Layout;
 
-const AppLayout = ({title, menu, userMenu, appBar, collapsed}) => (
+const AppLayout = ({title, menu, userMenu, appBar, translate, collapsed}) => (
     <Layout className='wrap'>
       <Sider className='blank-sider' width={256} collapsible trigger={null} collapsed={collapsed}>
         <div className='blank-index-logo'>
@@ -26,9 +28,19 @@ const AppLayout = ({title, menu, userMenu, appBar, collapsed}) => (
           }
         </Header>
         <Content/>
-        <Footer/>
+        <Footer>
+          <div className='blank-footer'>
+            <span>Blankadmin ©2017 Created by </span>
+            <a href="https://github.com/HeKunTong/blankadmin" target="__blank">blank</a>
+          </div>
+        </Footer>
       </Layout>
     </Layout>
 );
 
-export default connect(({collapsed}) => ({collapsed}))(AppLayout);
+const enhance = compose(
+  connect(({collapsed}) => ({ collapsed })),
+  translate
+);
+
+export default enhance(AppLayout);
