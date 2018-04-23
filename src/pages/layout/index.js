@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'mirrorx';
 import compose from 'recompose/compose';
 import { translate } from '../../i18n';
+import Breadcrumb from '../breadcrumb';
 import { Layout } from 'antd';
 import { logo } from '../../images';
 import './index.css';
@@ -27,7 +28,11 @@ const AppLayout = ({title, menu, userMenu, appBar, translate, collapsed}) => (
             React.cloneElement(appBar, { userMenu, collapsed })
           }
         </Header>
-        <Content/>
+        <Content>
+          <div className='blank-core-container'>
+            <Breadcrumb />
+          </div>
+        </Content>
         <Footer>
           <div className='blank-footer'>
             <span>Blankadmin ©2017 Created by </span>

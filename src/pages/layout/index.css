@@ -54,6 +54,17 @@
     margin: 0 10px 0 0;
 }
 
+.blank-core-container {
+    background: #fff;
+    padding: 16px;
+    border-bottom: 1px solid #e8e8e8;
+    margin: 2px 0 0;
+}
+
+.ant-breadcrumb {
+    color: rgba(0, 0, 0, .65);
+}
+
 .blank-footer {
     color: rgba(0, 0, 0, 0.45);
     padding: 20px;
