@@ -1,11 +1,16 @@
 import Polyglot from 'node-polyglot';
+import { messages as defaultMessages } from './';
 
-export default (locale = 'zh', messages) => {
+export default (locale = 'zh', customMessages) => {
+  const customMessage = customMessages[locale] || {};
+  const defaultMessage = defaultMessages[locale] || {};
+  const message = { ...defaultMessage, ...customMessage };
+
   return {
     name: 'i18n',
     initialState: new Polyglot({
       locale,
-      phrases: messages[locale]
+      phrases: message
     }),
     effects: {
       translate: (i18n, text) => {
