@@ -5,7 +5,8 @@ import { LocaleProvider } from 'antd';
 import locales from 'antd/lib/locale-provider';
 import models from './models';
 import { getI18nModel } from './i18n';
-import { AppBar, Layout, Login, Menu, UserMenu } from './pages';
+import Routes from './Routes';
+import { AppBar, Dashboard, Layout, Login, Menu, UserMenu } from './pages';
 
 models.forEach(model => {
   registerModel(model);
@@ -21,7 +22,7 @@ class Admin extends Component {
 
   render() {
 
-    const { locale, appLayout, title, menu, userMenu, appBar, login, children } = this.props;
+    const { locale, appLayout, title, dashboard, menu, userMenu, appBar, login, children, customRoutes } = this.props;
 
     const models = React.Children.map(children, ({props}) => props) || [];
 
@@ -37,6 +38,11 @@ class Admin extends Component {
                 }),
                 userMenu: React.createElement(userMenu || UserMenu),
                 appBar: React.createElement(appBar || AppBar),
+                routes: React.createElement(Routes, {
+                  models,
+                  dashboard: dashboard || Dashboard,
+                  customRoutes
+                }),  
                 title
               })} />
             </Switch>
@@ -56,10 +62,14 @@ Admin.defaultProps = {
 
 Admin.propTypes = {
   appLayout: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  // authClient: PropTypes.func.isRequired,
   locale: PropTypes.string,
   messages: PropTypes.object,
   title: PropTypes.node,
   menu: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  dashboard: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  restClient: PropTypes.func,
+  customRoutes: PropTypes.array,
 };
 
 export default Admin;

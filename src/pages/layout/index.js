@@ -9,7 +9,7 @@ import './index.css';
 
 const { Sider, Header, Content, Footer } = Layout;
 
-const AppLayout = ({title, menu, userMenu, appBar, translate, collapsed}) => (
+const AppLayout = ({title, menu, routes, userMenu, appBar, translate, collapsed}) => (
     <Layout className='wrap'>
       <Sider className='blank-sider' width={256} collapsible trigger={null} collapsed={collapsed}>
         <div className='blank-index-logo'>
@@ -25,12 +25,17 @@ const AppLayout = ({title, menu, userMenu, appBar, translate, collapsed}) => (
       <Layout>
         <Header style={{padding: 0}}>
           {
-            React.cloneElement(appBar, { userMenu, collapsed })
+            React.cloneElement(appBar, { userMenu, collapsed, translate })
           }
         </Header>
         <Content>
-          <div className='blank-core-container'>
+          <div className='blank-breadcrumb-container'>
             <Breadcrumb />
+          </div>
+          <div style={{padding: '16px'}}>
+            <div className='blank-core-container'>
+              {routes}
+            </div>
           </div>
         </Content>
         <Footer>

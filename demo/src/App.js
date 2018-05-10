@@ -4,6 +4,7 @@ import { Admin, Model } from '../../src';
 import messages from './i18n';
 
 class App extends Component {
+
   render() {
     return (
       <Admin messages={messages}>
