@@ -32,7 +32,7 @@ const AppLayout = ({title, menu, routes, userMenu, appBar, translate, collapsed}
           <div className='blank-breadcrumb-container'>
             <Breadcrumb />
           </div>
-          <div style={{padding: '16px'}}>
+          <div style={{padding: '16px 16px 0'}}>
             <div className='blank-core-container'>
               {routes}
             </div>

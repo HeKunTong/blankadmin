@@ -1,12 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'mirrorx';
+import { translate } from './i18n';
 // import { Authorization } from './auth';
 
-const ModelRoute = ({ name, list, create, edit, show, hasDelete }) => {
+const ModelRoute = ({ name, translate, list, create, edit, show, hasDelete }) => {
 
   const AuthorizationComponent = (component, model) => props => (
     React.createElement(component, {
       model,
+      translate,
       hasList: !!list,
       hasEdit: !!edit,
       hasCreate: !!create,
@@ -26,4 +28,4 @@ const ModelRoute = ({ name, list, create, edit, show, hasDelete }) => {
   );
 };
 
-export default ModelRoute;
+export default translate(ModelRoute);

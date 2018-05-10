@@ -8,14 +8,13 @@ import { getI18nModel } from './i18n';
 import Routes from './Routes';
 import { AppBar, Dashboard, Layout, Login, Menu, UserMenu } from './pages';
 
-models.forEach(model => {
-  registerModel(model);
-});
-
 class Admin extends Component {
 
   componentWillMount() {
     const { locale, messages } = this.props;
+    models.forEach(model => {
+      registerModel(model);
+    });
     registerModel(getI18nModel(locale, messages));
     render();
   }

@@ -4063,6 +4063,10 @@ inferno-vnode-flags@3.10.1:
   version "3.10.1"
   resolved "http://registry.npm.taobao.org/inferno-vnode-flags/download/inferno-vnode-flags-3.10.1.tgz#88a4528a3b4df0f33a3ace68dc45f05b651c0e41"
 
+inflection@^1.12.0:
+  version "1.12.0"
+  resolved "http://registry.npm.taobao.org/inflection/download/inflection-1.12.0.tgz#a200935656d6f5f6bc4dc7502e1aecb703228416"
+
 inflection@~1.10.0:
   version "1.10.0"
   resolved "http://registry.npm.taobao.org/inflection/download/inflection-1.10.0.tgz#5bffcb1197ad3e81050f8e17e21668087ee9eb2f"
