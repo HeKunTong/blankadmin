@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { actions, Link } from 'mirrorx';
 import { List, simpleRestClient, GET_LIST } from '../../../../src';
+import Filter from './Filter';
 import { Table } from 'antd';
 
 class UserList extends Component {
@@ -13,6 +14,9 @@ class UserList extends Component {
         current: 1,
         pageSize: 10,
         total: 0
+      },
+      filter: {
+
       }
     };
   }
@@ -22,10 +26,10 @@ class UserList extends Component {
   }
 
   get = (current) => {
-    const { pagination } = this.state;
+    const { filter, pagination } = this.state;
     actions.loading.set(true);
     const restClient = simpleRestClient('https://jsonplaceholder.typicode.com');
-    restClient(GET_LIST, 'users', {_page: current, _limit: pagination.pageSize}).then(response => {
+    restClient(GET_LIST, 'users', {_page: current, _limit: pagination.pageSize, _filter: filter}).then(response => {
       actions.loading.set(false);
       this.setState({ pagination: {...pagination, total: response.total, current}, data: response.data });
     }).catch(e => {
@@ -36,6 +40,10 @@ class UserList extends Component {
   handleChangePage = (pagination) => {
     this.get(pagination.current);
   }
+
+  onSearch = (values) => {
+    this.setState({filter: values}, () => this.get(1));
+  };
 
   render() {
     const { model, translate } = this.props;
@@ -68,7 +76,7 @@ class UserList extends Component {
     }];
 
     return (
-      <List>
+      <List filter={<Filter onSearch={this.onSearch}/>} {...this.props}>
         <Table rowKey='id' columns={columns} dataSource={data} pagination={pagination} onChange={this.handleChangePage}/>
       </List>
     );
